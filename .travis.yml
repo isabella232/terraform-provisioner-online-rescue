@@ -1,0 +1,20 @@
+sudo: false
+language: go
+go:
+- 1.11
+go_import_path: github.com/src-d/terraform-provisioner-online-rescue
+script:
+- make test
+- make vet
+before_deploy:
+- make packages
+deploy:
+  provider: releases
+  api_key:
+    secure: AWictP/t6/RG8217WaxxeiEd9u0VzWIe/DkL+dBv1CQzi/ZHtCi3AqDaXqB/wRgu8qN97ynWbkZYtpVhO74pZd/5+GT5kjiHsQLliFQsRzQJsz2W3M3mg4svXJ5xDmcAiXPaQL0ykm1ryPFP3wPF++fAEaotog4GrkO2kMx9Lu8U8Rajz1wSCJMRxwzfmimS1PRrFvLAkxws3FlwW+A7LRc8TdvZ93xP7HELBChtWIR7FGYMhjIgM2qjGhQ69bzuvwIOkE8127ZClSnwwdbX9xC4Y0v9Pn7hLj36hOcfeVpQA2Vg+a8fQ9VPZBM91Y5adX8kyPkUFyY6hZJaVh4Wn39wpR1n7fLF7g75NVA6Z7Y/LXphRIn/WmpNEGXkcSTAfiu9MDrHBl64BN8zA4CfaVhaj2PGKVaPBvCpedAXDsFwPFZEhYqyDxceE6yZK6VNuwprIDmKB013ySuYSFUowMgn3lFEVLT1oG0A9jDf2Q/Y3CJP7fDYpopCvjN3AmFn4y/p0U/qdviEWf0I77KrBcjhWSJmncSgugvDjUBmL9fTUJxJ6naQ3FjehUN9n8FvsiMRwfkgdNQ5V7gENjVXKCJ/vLGs7pJ+By0SExsdG9iSTbeZekmOrqRDcByt+51CHnrF27gFf9n+g9eKPdvH2YIUeVFY+J9n7xF8mlKKol0=
+  skip_cleanup: true
+  file:
+    - build/terraform-provisioner-online-rescue_${TRAVIS_TAG}_darwin_amd64.tar.gz
+    - build/terraform-provisioner-online-rescue_${TRAVIS_TAG}_linux_amd64.tar.gz
+  on:
+    tags: true
