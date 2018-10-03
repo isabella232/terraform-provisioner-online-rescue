@@ -15,7 +15,7 @@ About The Provisioner
 ---------------------
 
 This provisioner is built to enable the [Online.net rescue mode](https://documentation.online.net/en/dedicated-server/rescue/rescue-mode)
-on a server and then execute actions to it via [remote-exec])(https://www.terraform.io/docs/provisioners/remote-exec.html) when it is being
+on a server and then execute actions to it via [remote-exec](https://www.terraform.io/docs/provisioners/remote-exec.html) when it is being
 created.  
 This can be used to for example format the disks or install a specific OS.
 
