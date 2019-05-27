@@ -1,11 +1,13 @@
 sudo: false
 language: go
 go:
-- 1.11
+  - 1.11.x
+env:
+  - GOFLAGS=-mod=vendor GO111MODULE=on
 go_import_path: github.com/src-d/terraform-provisioner-online-rescue
 script:
-- make test
-- make vet
+  - make test
+  - make vet
 before_deploy:
 - make packages
 deploy:
